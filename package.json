@@ -1,0 +1,140 @@
+{
+  "name": "motion-canvas-cli",
+  "version": "0.0.0-development",
+  "description": "Command line tool for managing Motion Canvas projects, scenes, and component files",
+  "files": [
+    "!lib/__tests__/**/*",
+    "lib/**/*",
+    "bin/**/*"
+  ],
+  "bin": {
+    "mc": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf ./lib/",
+    "cm": "cz",
+    "lint": "eslint ./src/ --fix",
+    "start": "TS_NODE_FILES=true ts-node ./src/cli.ts",
+    "start:local": "",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release",
+    "test:watch": "jest --watch",
+    "test": "jest --coverage",
+    "typecheck": "tsc --noEmit",
+    "local": "sudo npm i -g && mc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberAstronaut101/motion-canvas-cli.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Elliot Mason",
+    "email": "cyberastronaut101@users.noreply.github.com",
+    "url": "https://github.com/CyberAstronaut101"
+  },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "keywords": [
+    "boilerplate",
+    "cli",
+    "template",
+    "typescript",
+    "vscode",
+    "jest",
+    "husky",
+    "commitizen",
+    "semantic-release",
+    "codecov"
+  ],
+  "bugs": {
+    "url": "https://github.com/CyberAstronaut101/motion-canvas-cli/issues"
+  },
+  "homepage": "https://github.com/CyberAstronaut101/motion-canvas-cli#readme",
+  "dependencies": {
+    "clear": "^0.1.0",
+    "commander": "^10.0.0",
+    "figlet": "^1.5.2",
+    "local": "^0.3.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@ryansonshine/commitizen": "^4.2.8",
+    "@ryansonshine/cz-conventional-changelog": "^3.3.4",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^12.20.55",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "chalk": "^4.1.2",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "execa": "^5.1.1",
+    "husky": "^6.0.0",
+    "jest": "^27.2.0",
+    "lint-staged": "^10.5.4",
+    "nodemon": "^2.0.21",
+    "prettier": "^2.2.1",
+    "semantic-release": "^19.0.2",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@ryansonshine/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --cache-location .eslintcache --fix"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "type": "build",
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "build",
+                "section": "Dependencies and Other Build Updates",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  }
+}
