@@ -22,7 +22,9 @@
     "test:watch": "jest --watch",
     "test": "jest --coverage",
     "typecheck": "tsc --noEmit",
-    "local": "sudo npm i -g && mc"
+    "local": "sudo npm i -g && mc",
+    "big": "npm uninstall -g motion-canvas-cli && npm run build && npm run prepublish && npm i -g .",
+    "prepublish": "copyfiles --up 1 \"src/schematics/**/*\" \"lib/\""
   },
   "repository": {
     "type": "git",
@@ -69,6 +71,7 @@
     "@typescript-eslint/parser": "^4.22.0",
     "chalk": "^4.1.2",
     "conventional-changelog-conventionalcommits": "^5.0.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
