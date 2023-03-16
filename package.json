@@ -40,16 +40,8 @@
     "node": ">=12.0"
   },
   "keywords": [
-    "boilerplate",
-    "cli",
-    "template",
-    "typescript",
-    "vscode",
-    "jest",
-    "husky",
-    "commitizen",
-    "semantic-release",
-    "codecov"
+    "motion canvas",
+    "cli"
   ],
   "bugs": {
     "url": "https://github.com/CyberAstronaut101/motion-canvas-cli/issues"
